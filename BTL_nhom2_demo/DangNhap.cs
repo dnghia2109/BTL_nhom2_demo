@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BTL_nhom2_demo.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,26 +18,65 @@ namespace BTL_nhom2_demo
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        
+        QLBH_04Entities db = new QLBH_04Entities();
+
+
+        public Boolean getID(string nameU, string pass)
         {
-            //DanhSachKhachHang danhSachKhachHang = new DanhSachKhachHang();
-            //danhSachKhachHang.ShowDialog();
+            var select = from s in db.tb_User select s;
+            foreach (var data in select)
+            {
+                if (data.Username == nameU && data.Password == pass)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-            //DanhSachSanPham danhSachSanPham = new DanhSachSanPham();
-            //danhSachSanPham.ShowDialog();
+        public void button2_Click(object sender, EventArgs e)
+        {
+            if (getID(textBox1.Text, textBox2.Text)) 
+            {
+                Main home = new Main();
+                home.ShowDialog();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Username or Password is incorrect! Please try again...", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-            //DanhSachNhanVien danhSachNhanVien = new DanhSachNhanVien();
-            //danhSachNhanVien.ShowDialog();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to exit?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox2.PasswordChar = (char)0;
+            }
+            else
+            {
+                textBox2.PasswordChar = '*';
+            }
+        }
 
-            //HoaDonBan hoaDonBan = new HoaDonBan();
-            //hoaDonBan.ShowDialog();
+        private void DangNhap_Load(object sender, EventArgs e)
+        {
 
-            //DanhSachHoaDonBan danhSachHoaDonBan = new DanhSachHoaDonBan();
-            //danhSachHoaDonBan.ShowDialog();
+        }
 
-            // Bài của Đức
-            CaLam caLam = new CaLam();
-            caLam.ShowDialog();
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

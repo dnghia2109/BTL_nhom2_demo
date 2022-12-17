@@ -32,6 +32,7 @@
         <EntityTypeShape EntityType="QLBH_04Model.sysdiagram" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="QLBH_04Model.tb_Chatlieu" Width="1.5" PointX="11.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="QLBH_04Model.FK_tb_Hanghoa_tb_Chatlieu" />
+        <EntityTypeShape EntityType="QLBH_04Model.tb_User" Width="1.5" PointX="9.25" PointY="9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

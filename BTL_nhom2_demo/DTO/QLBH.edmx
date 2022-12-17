@@ -131,12 +131,14 @@
           <Property Name="ma_ca" Type="int" />
           <Property Name="ma_cv" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QLBH_04.dbo.tb_User' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="tb_User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="tb_Xuatxu">
           <Key>
             <PropertyRef Name="ma_nuoc" />
@@ -314,6 +316,7 @@ warning 6013: The table/view 'QLBH_04.dbo.tb_User' does not have a primary key d
           <EntitySet Name="tb_Loaihang" EntityType="Self.tb_Loaihang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NCC" EntityType="Self.tb_NCC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Nhanvien" EntityType="Self.tb_Nhanvien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_User" EntityType="Self.tb_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Xuatxu" EntityType="Self.tb_Xuatxu" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tb_CTHDB_tb_Hanghoa" Association="Self.FK_tb_CTHDB_tb_Hanghoa">
             <End Role="tb_Hanghoa" EntitySet="tb_Hanghoa" />
@@ -724,6 +727,7 @@ warning 6013: The table/view 'QLBH_04.dbo.tb_User' does not have a primary key d
             <End Role="tb_Chatlieu" EntitySet="tb_Chatlieu" />
             <End Role="tb_Hanghoa" EntitySet="tb_Hanghoa" />
           </AssociationSet>
+          <EntitySet Name="tb_User" EntityType="QLBH_04Model.tb_User" />
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -755,6 +759,14 @@ warning 6013: The table/view 'QLBH_04.dbo.tb_User' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tb_User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -904,6 +916,15 @@ warning 6013: The table/view 'QLBH_04.dbo.tb_User' does not have a primary key d
               <MappingFragment StoreEntitySet="tb_Chatlieu">
                 <ScalarProperty Name="ten_chat_lieu" ColumnName="ten_chat_lieu" />
                 <ScalarProperty Name="ma_chat_lieu" ColumnName="ma_chat_lieu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_User">
+            <EntityTypeMapping TypeName="QLBH_04Model.tb_User">
+              <MappingFragment StoreEntitySet="tb_User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

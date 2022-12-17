@@ -199,7 +199,7 @@ namespace BTL_nhom2_demo
             DialogResult res = MessageBox.Show("Bạn có muốn thoát khỏi chương trình?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
-                Close();
+                this.Close();
             }
         }
 

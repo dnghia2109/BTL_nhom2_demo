@@ -7,6 +7,7 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -34,12 +35,6 @@ namespace BTL_nhom2_demo
             dataGridView1.Columns[1].HeaderText = "Tên";
             dataGridView1.Columns[2].HeaderText = "Địa chỉ";
             dataGridView1.Columns[3].HeaderText = "Số điện thoại";
-            //var rs2 = from c in db.BANGCAPs
-            //          select c;
-            //comboBox1.DataSource = rs2.ToList();
-            //comboBox1.DisplayMember = "TenBangCap";
-            //comboBox1.ValueMember = "MaBangCap";
-
         }
 
         public void ClearForm()
@@ -61,37 +56,84 @@ namespace BTL_nhom2_demo
             db.SaveChanges();
             LoadData();
             ClearForm();
-        }   
+        }
 
-        public void Sua()
+    /*    public void Sua()
         {
             int maKH = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_kh"].Value.ToString());
             tb_Khachhang curKhachHang = db.tb_Khachhang.Where(khachHang => khachHang.ma_kh == maKH).SingleOrDefault();
+
+
             if (String.IsNullOrEmpty(txbTen.Text) || String.IsNullOrEmpty(txbDiaChi.Text) || String.IsNullOrEmpty(txbDienThoai.Text))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            } 
+            }
             else
             {
                 curKhachHang.ten_kh = txbTen.Text;
                 curKhachHang.dia_chi = txbDiaChi.Text;
-                var rs = from c in db.tb_Khachhang 
-                         where c.dien_thoai == txbDienThoai.Text
-                         select c.dien_thoai;
-                
-                //if (rs.Equals())
-                //{
-                //    MessageBox.Show("Số điện thoại này đã tồn tại. Vui lòng sử dụng số khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    txbDienThoai.Focus();
-                //    return;
-                //}
-                curKhachHang.dien_thoai = txbDienThoai.Text;
+                var rs = from c in db.tb_Khachhang
+                         select c;
+                foreach (var item in rs)
+                {
+                    if (!item.dien_thoai.ToString().Equals(txbDienThoai.Text.ToString()))
+                    {
+                        curKhachHang.dien_thoai = txbDienThoai.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Số điện thoại này đã tồn tại. Vui lòng sử dụng số khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txbDienThoai.Focus();
+                        return;
+                    }
+
+                }
                 db.SaveChanges();
                 MessageBox.Show("Cập nhật thành công", "Notification", MessageBoxButtons.OK);
                 LoadData();
                 ClearForm();
             }
-            
+
+        }*/
+
+
+
+        //Cách 1
+        public void Sua()
+        {
+            int maKH = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_kh"].Value.ToString());
+            tb_Khachhang curKhachHang = db.tb_Khachhang.Where(khachHang => khachHang.ma_kh == maKH).SingleOrDefault();
+
+
+            if (String.IsNullOrEmpty(txbTen.Text) || String.IsNullOrEmpty(txbDiaChi.Text) || String.IsNullOrEmpty(txbDienThoai.Text))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            else
+            {
+                curKhachHang.ten_kh = txbTen.Text;
+                curKhachHang.dia_chi = txbDiaChi.Text;
+                var rs = from c in db.tb_Khachhang
+                         select c;
+                foreach(var i in rs)
+                {
+                    if (i.dien_thoai.ToString().Equals(txbDienThoai.Text.ToString()))
+                    {
+                        MessageBox.Show("Số điện thoại này đã tồn tại. Vui lòng sử dụng số khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txbDienThoai.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        curKhachHang.dien_thoai = txbDienThoai.Text;
+                    }
+                }
+                db.SaveChanges();
+                MessageBox.Show("Cập nhật thành công", "Notification", MessageBoxButtons.OK);
+                LoadData();
+                ClearForm();
+            }
+
         }
 
         public void Xoa()
@@ -108,8 +150,6 @@ namespace BTL_nhom2_demo
                 LoadData();
             }
         }
-
-        
 
 
         private void label1_Click(object sender, EventArgs e)

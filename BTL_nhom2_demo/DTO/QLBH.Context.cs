@@ -39,5 +39,6 @@ namespace BTL_nhom2_demo.DTO
         public virtual DbSet<tb_Xuatxu> tb_Xuatxu { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tb_Chatlieu> tb_Chatlieu { get; set; }
+        public virtual DbSet<tb_User> tb_User { get; set; }
     }
 }

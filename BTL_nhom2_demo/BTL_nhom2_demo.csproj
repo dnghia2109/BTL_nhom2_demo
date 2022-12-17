@@ -145,6 +145,9 @@
     <Compile Include="DTO\tb_Nhanvien.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\tb_User.cs">
+      <DependentUpon>QLBH.tt</DependentUpon>
+    </Compile>
     <Compile Include="DTO\tb_Xuatxu.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>

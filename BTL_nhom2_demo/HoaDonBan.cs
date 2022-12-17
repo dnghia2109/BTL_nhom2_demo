@@ -85,7 +85,7 @@ namespace BTL_nhom2_demo
                 //LoadDataGridViewChiTietHoaDon();
             }
 
-            // Cần có mã hóa đơn mới load đc nếu như muốn xem chi tiết hóa đơn
+            // Cần có mã hóa đơn mới load đc nếu như muốn xem chi tiết hóa đơn ( thêm if else )
             LoadDataGridViewChiTietHoaDon();
         }
 
@@ -286,13 +286,13 @@ namespace BTL_nhom2_demo
             soLuong = (double)curSanPham.so_luong;
             if (Convert.ToDouble(txbSoLuong.Text) > soLuong )
             {
-                MessageBox.Show("Số lượng của sản phẩm này chỉ còn " + soLuong, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Số lượng còn lại của sản phẩm này chỉ còn " + soLuong, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txbSoLuong.Text = "";
                 txbSoLuong.Focus();
                 return;
             }
             
-
+            
             db.tb_CTHDB.Add(new tb_CTHDB()
             {
                 ma_hdb = maHoaDonBan,
@@ -300,13 +300,14 @@ namespace BTL_nhom2_demo
                 so_luong = Convert.ToDouble(txbSoLuong.Text),
                 don_gia = curSanPham.don_gia_ban,
                 giam_gia = Convert.ToDouble(txbKhuyenMai.Text),
-                thanh_tien = curSanPham.don_gia_ban*Convert.ToDouble(txbSoLuong.Text)-(curSanPham.don_gia_ban*Convert.ToDouble(txbSoLuong.Text)*(Convert.ToDouble(txbKhuyenMai.Text)/100)),
+                thanh_tien = curSanPham.don_gia_ban*Convert.ToDouble(txbSoLuong.Text)-
+                            (curSanPham.don_gia_ban*Convert.ToDouble(txbSoLuong.Text)*(Convert.ToDouble(txbKhuyenMai.Text)/100)),
             });
             db.SaveChanges();
             LoadDataGridViewChiTietHoaDon();
 
             // Cập nhật số lượng sản phẩm cho bảng tb_Hanghoa
-            soLuongConlai = soLuong - Convert.ToDouble(txbSoLuong.Text);
+            soLuongConlai = soLuong - Convert.ToDouble(txbSoLuong.Text);    
             curSanPham.so_luong = soLuongConlai;
             db.SaveChanges();
 
@@ -325,7 +326,7 @@ namespace BTL_nhom2_demo
             btnAdd.Enabled = true;
         }
 
-        // Reset lại khi mặt hàng thêm mới đã có trên gridview sản phẩm
+        // Reset lại form nhập thông tin sp khi mặt hàng thêm mới đã có trên gridview sản phẩm
         private void ResetValuesHang()
         {
             cbMaHang.Text = "";
@@ -385,6 +386,7 @@ namespace BTL_nhom2_demo
             }
         }
 
+        // Dropdown danh sách Đơn hàng và hiển thị dữ liệu của đơn hàng lên gridview
         private void cbMaHD_DropDown(object sender, EventArgs e)
         {
             var rs = from c in db.tb_HDB
