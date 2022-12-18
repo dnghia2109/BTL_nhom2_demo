@@ -75,7 +75,8 @@ namespace BTL_nhom2_demo
 
         private void btnLoaiSanPham_Click(object sender, EventArgs e)
         {
-
+            LoaiSanPham caLoaiSanPham = new LoaiSanPham();
+            caLoaiSanPham.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

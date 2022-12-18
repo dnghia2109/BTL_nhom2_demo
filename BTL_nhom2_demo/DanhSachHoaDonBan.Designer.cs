@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,18 +43,22 @@
             this.txbMaHoaDonTimKiem.Location = new System.Drawing.Point(27, 89);
             this.txbMaHoaDonTimKiem.Multiline = true;
             this.txbMaHoaDonTimKiem.Name = "txbMaHoaDonTimKiem";
-            this.txbMaHoaDonTimKiem.Size = new System.Drawing.Size(194, 32);
+            this.txbMaHoaDonTimKiem.Size = new System.Drawing.Size(194, 24);
             this.txbMaHoaDonTimKiem.TabIndex = 0;
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnSearch.Image = global::BTL_nhom2_demo.Properties.Resources.search;
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearch.Location = new System.Drawing.Point(227, 89);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(80, 32);
+            this.btnSearch.Size = new System.Drawing.Size(121, 24);
             this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Tìm kiếm";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Text = " Tìm kiếm";
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label1
@@ -87,19 +92,32 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(519, 434);
+            this.btnClose.Image = global::BTL_nhom2_demo.Properties.Resources.exit;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(499, 434);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(95, 23);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(24, 439);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(322, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "(*) Double click lên từng hóa đơn để xem thông tin chi tiết hóa đơn";
             // 
             // DanhSachHoaDonBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 469);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
@@ -107,6 +125,7 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txbMaHoaDonTimKiem);
             this.Name = "DanhSachHoaDonBan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DanhSachHoaDonBan";
             this.Load += new System.EventHandler(this.DanhSachHoaDonBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -123,5 +142,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label3;
     }
 }

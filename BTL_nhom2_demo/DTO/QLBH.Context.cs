@@ -13,10 +13,10 @@ namespace BTL_nhom2_demo.DTO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QLBH_04Entities : DbContext
+    public partial class QLBH_nhom02Entities : DbContext
     {
-        public QLBH_04Entities()
-            : base("name=QLBH_04Entities")
+        public QLBH_nhom02Entities()
+            : base("name=QLBH_nhom02Entities")
         {
         }
     
@@ -26,19 +26,16 @@ namespace BTL_nhom2_demo.DTO
         }
     
         public virtual DbSet<tb_Calam> tb_Calam { get; set; }
+        public virtual DbSet<tb_Chatlieu> tb_Chatlieu { get; set; }
         public virtual DbSet<tb_Congviec> tb_Congviec { get; set; }
         public virtual DbSet<tb_CTHDB> tb_CTHDB { get; set; }
-        public virtual DbSet<tb_CTHDN> tb_CTHDN { get; set; }
         public virtual DbSet<tb_Hanghoa> tb_Hanghoa { get; set; }
         public virtual DbSet<tb_HDB> tb_HDB { get; set; }
-        public virtual DbSet<tb_HDN> tb_HDN { get; set; }
         public virtual DbSet<tb_Khachhang> tb_Khachhang { get; set; }
         public virtual DbSet<tb_Loaihang> tb_Loaihang { get; set; }
         public virtual DbSet<tb_NCC> tb_NCC { get; set; }
         public virtual DbSet<tb_Nhanvien> tb_Nhanvien { get; set; }
-        public virtual DbSet<tb_Xuatxu> tb_Xuatxu { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<tb_Chatlieu> tb_Chatlieu { get; set; }
         public virtual DbSet<tb_User> tb_User { get; set; }
+        public virtual DbSet<tb_Xuatxu> tb_Xuatxu { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace BTL_nhom2_demo
     public partial class DanhSachNhanVien : Form
     {
 
-        QLBH_04Entities db = new QLBH_04Entities();
+        QLBH_nhom02Entities db = new QLBH_nhom02Entities();
 
         public DanhSachNhanVien()
         {
@@ -163,8 +163,6 @@ namespace BTL_nhom2_demo
                 LoadData();
                 ClearForm();
             }
-           
-
         }
 
         public void Sua()

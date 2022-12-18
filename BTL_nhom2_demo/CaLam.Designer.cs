@@ -75,13 +75,18 @@
             // 
             // btn_add
             // 
-            this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_add.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add.Image = global::BTL_nhom2_demo.Properties.Resources.add;
+            this.btn_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_add.Location = new System.Drawing.Point(17, 154);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(93, 43);
+            this.btn_add.Size = new System.Drawing.Size(93, 31);
             this.btn_add.TabIndex = 3;
             this.btn_add.Text = "THÊM";
-            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // txt_maCa
             // 
@@ -101,34 +106,48 @@
             // 
             // btn_del
             // 
-            this.btn_del.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_del.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_del.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_del.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_del.Image = global::BTL_nhom2_demo.Properties.Resources.delete;
+            this.btn_del.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_del.Location = new System.Drawing.Point(215, 154);
             this.btn_del.Name = "btn_del";
-            this.btn_del.Size = new System.Drawing.Size(93, 43);
+            this.btn_del.Size = new System.Drawing.Size(93, 31);
             this.btn_del.TabIndex = 6;
             this.btn_del.Text = "XÓA";
-            this.btn_del.UseVisualStyleBackColor = true;
+            this.btn_del.UseVisualStyleBackColor = false;
+            this.btn_del.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Tomato;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::BTL_nhom2_demo.Properties.Resources.exit;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(314, 154);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 43);
+            this.button2.Size = new System.Drawing.Size(93, 31);
             this.button2.TabIndex = 7;
             this.button2.Text = "ĐÓNG";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btn_update
             // 
-            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_update.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_update.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_update.Image = global::BTL_nhom2_demo.Properties.Resources.edit;
+            this.btn_update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_update.Location = new System.Drawing.Point(116, 154);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(93, 43);
+            this.btn_update.Size = new System.Drawing.Size(93, 31);
             this.btn_update.TabIndex = 8;
             this.btn_update.Text = "SỬA";
-            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.UseVisualStyleBackColor = false;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // groupBox1
             // 
@@ -177,7 +196,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "CaLam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ca Lam";
             this.Load += new System.EventHandler(this.CaLam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data_GV_caLam)).EndInit();

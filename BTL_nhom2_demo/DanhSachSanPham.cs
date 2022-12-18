@@ -14,7 +14,7 @@ namespace BTL_nhom2_demo
 {
     public partial class DanhSachSanPham : Form
     {
-        QLBH_04Entities db = new QLBH_04Entities();
+        QLBH_nhom02Entities db = new QLBH_nhom02Entities();
 
         public DanhSachSanPham()
         {
@@ -105,8 +105,6 @@ namespace BTL_nhom2_demo
                 txbTen.Focus();
                 return false;
             }
-
-            
 
             if (String.IsNullOrEmpty(cbLoaiHang.Text))
             {

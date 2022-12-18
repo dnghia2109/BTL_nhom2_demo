@@ -18,7 +18,6 @@ namespace BTL_nhom2_demo.DTO
         public tb_Hanghoa()
         {
             this.tb_CTHDB = new HashSet<tb_CTHDB>();
-            this.tb_CTHDN = new HashSet<tb_CTHDN>();
         }
     
         public int ma_hang { get; set; }
@@ -31,12 +30,10 @@ namespace BTL_nhom2_demo.DTO
         public string thoi_gian_bh { get; set; }
         public Nullable<int> ma_chat_lieu { get; set; }
     
+        public virtual tb_Chatlieu tb_Chatlieu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_CTHDB> tb_CTHDB { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_CTHDN> tb_CTHDN { get; set; }
         public virtual tb_Loaihang tb_Loaihang { get; set; }
         public virtual tb_Xuatxu tb_Xuatxu { get; set; }
-        public virtual tb_Chatlieu tb_Chatlieu { get; set; }
     }
 }

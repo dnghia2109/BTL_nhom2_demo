@@ -24,8 +24,8 @@ namespace BTL_nhom2_demo
 
         }
 
-        QLBH_04Entities db = new QLBH_04Entities();
-        
+        QLBH_nhom02Entities db = new QLBH_nhom02Entities();
+
 
         public void LoadData()
         {

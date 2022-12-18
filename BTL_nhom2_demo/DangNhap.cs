@@ -19,7 +19,7 @@ namespace BTL_nhom2_demo
         }
 
         
-        QLBH_04Entities db = new QLBH_04Entities();
+        QLBH_nhom02Entities db = new QLBH_nhom02Entities();
 
 
         public Boolean getID(string nameU, string pass)
@@ -37,11 +37,18 @@ namespace BTL_nhom2_demo
 
         public void button2_Click(object sender, EventArgs e)
         {
-            if (getID(textBox1.Text, textBox2.Text)) 
+            if (getID(textBox1.Text, textBox2.Text) && textBox1.Text == "admin") 
             {
                 Main home = new Main();
                 home.ShowDialog();
                 
+            }
+            else if (getID(textBox1.Text, textBox2.Text))
+            {
+                Main home = new Main();
+                home.btnDanhSachNhanVien.Enabled = false;
+                home.label1.Text = "Chào mừng: user1";
+                home.ShowDialog();
             }
             else
             {

@@ -18,7 +18,6 @@ namespace BTL_nhom2_demo.DTO
         public tb_Nhanvien()
         {
             this.tb_HDB = new HashSet<tb_HDB>();
-            this.tb_HDN = new HashSet<tb_HDN>();
         }
     
         public int ma_nv { get; set; }
@@ -34,7 +33,5 @@ namespace BTL_nhom2_demo.DTO
         public virtual tb_Congviec tb_Congviec { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_HDB> tb_HDB { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_HDN> tb_HDN { get; set; }
     }
 }

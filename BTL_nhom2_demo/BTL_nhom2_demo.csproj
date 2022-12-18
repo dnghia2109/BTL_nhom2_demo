@@ -112,9 +112,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBH.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DTO\sysdiagram.cs">
-      <DependentUpon>QLBH.tt</DependentUpon>
-    </Compile>
     <Compile Include="DTO\tb_Calam.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>
@@ -127,16 +124,10 @@
     <Compile Include="DTO\tb_CTHDB.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\tb_CTHDN.cs">
-      <DependentUpon>QLBH.tt</DependentUpon>
-    </Compile>
     <Compile Include="DTO\tb_Hanghoa.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\tb_HDB.cs">
-      <DependentUpon>QLBH.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DTO\tb_HDN.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\tb_Khachhang.cs">
@@ -162,6 +153,12 @@
     </Compile>
     <Compile Include="HoaDonBan.Designer.cs">
       <DependentUpon>HoaDonBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoaiSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoaiSanPham.Designer.cs">
+      <DependentUpon>LoaiSanPham.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -206,6 +203,9 @@
     <EmbeddedResource Include="HoaDonBan.resx">
       <DependentUpon>HoaDonBan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoaiSanPham.resx">
+      <DependentUpon>LoaiSanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,16 +242,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DTO\QLBH.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLBH.edmx</DependentUpon>
-      <LastGenOutput>QLBH.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DTO\QLBH.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLBH.edmx</DependentUpon>
-      <LastGenOutput>QLBH.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\product1.png" />
     <None Include="Resources\team_staff.png" />
     <None Include="Resources\supplier.png" />
@@ -268,6 +258,18 @@
     <None Include="Resources\bill.png" />
     <None Include="Resources\add-user.png" />
     <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DTO\QLBH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLBH.edmx</DependentUpon>
+      <LastGenOutput>QLBH.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DTO\QLBH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLBH.edmx</DependentUpon>
+      <LastGenOutput>QLBH.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

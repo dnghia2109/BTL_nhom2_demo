@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txbGioiTinh = new System.Windows.Forms.TextBox();
             this.cbCongViec = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbCaLam = new System.Windows.Forms.ComboBox();
@@ -50,7 +51,6 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.txbGioiTinh = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -93,6 +93,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
             // 
+            // txbGioiTinh
+            // 
+            this.txbGioiTinh.Location = new System.Drawing.Point(107, 68);
+            this.txbGioiTinh.Margin = new System.Windows.Forms.Padding(2);
+            this.txbGioiTinh.Multiline = true;
+            this.txbGioiTinh.Name = "txbGioiTinh";
+            this.txbGioiTinh.Size = new System.Drawing.Size(193, 27);
+            this.txbGioiTinh.TabIndex = 15;
+            // 
             // cbCongViec
             // 
             this.cbCongViec.FormattingEnabled = true;
@@ -133,6 +142,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(425, 31);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -251,56 +261,59 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(35, 320);
+            this.btnAdd.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.Image = global::BTL_nhom2_demo.Properties.Resources.add_user;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(126, 320);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(67, 33);
+            this.btnAdd.Size = new System.Drawing.Size(85, 29);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Thêm ";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(142, 320);
+            this.btnEdit.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEdit.Image = global::BTL_nhom2_demo.Properties.Resources.edit;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(244, 320);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(67, 33);
+            this.btnEdit.Size = new System.Drawing.Size(85, 29);
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(256, 320);
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Image = global::BTL_nhom2_demo.Properties.Resources.delete;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(363, 320);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(67, 33);
+            this.btnDelete.Size = new System.Drawing.Size(85, 29);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(371, 320);
+            this.btnExit.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExit.Image = global::BTL_nhom2_demo.Properties.Resources.exit;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(490, 320);
             this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(67, 33);
+            this.btnExit.Size = new System.Drawing.Size(85, 29);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Đóng";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // txbGioiTinh
-            // 
-            this.txbGioiTinh.Location = new System.Drawing.Point(107, 68);
-            this.txbGioiTinh.Margin = new System.Windows.Forms.Padding(2);
-            this.txbGioiTinh.Multiline = true;
-            this.txbGioiTinh.Name = "txbGioiTinh";
-            this.txbGioiTinh.Size = new System.Drawing.Size(193, 27);
-            this.txbGioiTinh.TabIndex = 15;
             // 
             // DanhSachNhanVien
             // 
@@ -316,6 +329,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DanhSachNhanVien";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DanhSachNhanVien";
             this.Load += new System.EventHandler(this.DanhSachNhanVien_Load);
             this.groupBox1.ResumeLayout(false);

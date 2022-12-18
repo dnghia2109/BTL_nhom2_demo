@@ -18,7 +18,7 @@ namespace BTL_nhom2_demo
 {
     public partial class DanhSachKhachHang : Form
     {
-        QLBH_04Entities db = new QLBH_04Entities();
+        QLBH_nhom02Entities db = new QLBH_nhom02Entities();
 
         public DanhSachKhachHang()
         {
@@ -98,12 +98,15 @@ namespace BTL_nhom2_demo
                 tb_Khachhang curKhachHang = db.tb_Khachhang.Where(khachHang => khachHang.ma_kh == maKH).SingleOrDefault();
                 curKhachHang.ten_kh = txbTen.Text;
                 curKhachHang.dia_chi = txbDiaChi.Text;
-                var rs = from c in db.tb_Khachhang
-                         select c;
-
+                /*var rs = from c in db.tb_Khachhang
+                         select c;*/
+                var rs = db.tb_Khachhang.Select(s => new {
+                    s.dien_thoai,
+                    s.dia_chi              
+                }).ToList();
                 foreach (var i in rs)
                 {
-                    if (i.dien_thoai.ToString().Equals(txbDienThoai.Text.ToString()) == true)
+                    if (i.dien_thoai.ToString().Equals(txbDienThoai.Text.ToString()))
                     {
                         MessageBox.Show("Số điện thoại này đã tồn tại. Vui lòng sử dụng số khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txbDienThoai.Focus();
@@ -123,6 +126,7 @@ namespace BTL_nhom2_demo
 
         public void Xoa()
         {
+
             int maKH = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_kh"].Value.ToString());
             tb_Khachhang curKhachHang = db.tb_Khachhang.Where(khacHang => khacHang.ma_kh == maKH).SingleOrDefault();
 
@@ -175,6 +179,11 @@ namespace BTL_nhom2_demo
         }
 
         private void txbTen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DanhSachKhachHang_Load(object sender, EventArgs e)
         {
 
         }

@@ -20,7 +20,7 @@ namespace BTL_nhom2_demo
 
         }
 
-        QLBH_04Entities db = new QLBH_04Entities();
+        QLBH_nhom02Entities db = new QLBH_nhom02Entities();
 
         public QuanLyNCC()
         {
@@ -28,8 +28,35 @@ namespace BTL_nhom2_demo
             LoadData();
         }
 
+        public Boolean CheckEmptyInfo()
+        {
+            if (String.IsNullOrEmpty(textBox2.Text))
+            {
+                MessageBox.Show("Vui lòng điền Tên NCC.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                textBox2.Focus();
+                return false;
+            }
+
+            if(String.IsNullOrEmpty(textBox3.Text))
+            {
+                MessageBox.Show("Vui lòng điền địa chỉ.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                textBox3.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(textBox4.Text))
+            {
+                MessageBox.Show("Vui lòng điền SĐT.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                textBox4.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
         public void LoadData()
         {
+            
             var res = from c in db.tb_NCC select c;
             dataGridView1.DataSource = res.ToList();
             dataGridView1.Columns[0].HeaderText = "Mã nhà cung cấp";
@@ -40,17 +67,47 @@ namespace BTL_nhom2_demo
 
         public void Create()
         {
+            if (CheckEmptyInfo()) { 
+                if (!String.IsNullOrEmpty(textBox1.Text))
+                {
+                    tb_NCC NCC = new tb_NCC()
+                    {
+                        ma_ncc = Int32.Parse(textBox1.Text),
+                        ten_ncc = textBox2.Text,
+                        dia_chi = textBox3.Text,
+                        dien_thoai = textBox4.Text
+                    };
+                    db.tb_NCC.Add(NCC);
+                }
+                else
+                {
+                    tb_NCC NCC = new tb_NCC()
+                    {                       
+                        ten_ncc = textBox2.Text,
+                        dia_chi = textBox3.Text,
+                        dien_thoai = textBox4.Text
+                    };
+                    db.tb_NCC.Add(NCC);
+                }
+      
+                db.SaveChanges();
+                LoadData();
+            }
+        }
 
-            tb_NCC NCC = new tb_NCC()
+        public void Edit()
+        {
+            if (CheckEmptyInfo())
             {
-                ma_ncc = Int32.Parse(textBox1.Text),
-                ten_ncc = textBox2.Text,
-                dia_chi = textBox3.Text,
-                dien_thoai = textBox4.Text
-            };
-            db.tb_NCC.Add(NCC);
-            db.SaveChanges();
-            LoadData();
+                int ma_cc1 = Convert.ToInt32(textBox1.Text);
+                tb_NCC Ncc = db.tb_NCC.Where(p => p.ma_ncc == ma_cc1).SingleOrDefault();
+
+                Ncc.ten_ncc = textBox2.Text;
+                Ncc.dia_chi = textBox3.Text;
+                Ncc.dien_thoai = textBox4.Text;
+                db.SaveChanges();
+                LoadData();
+            }
         }
 
         public void Del()
@@ -78,6 +135,7 @@ namespace BTL_nhom2_demo
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            textBox1.Enabled = false;
             DataGridViewRow row = new DataGridViewRow();
             row = dataGridView1.Rows[e.RowIndex];
             textBox1.Text = Convert.ToString(row.Cells["ma_ncc"].Value);
@@ -89,6 +147,12 @@ namespace BTL_nhom2_demo
         private void button2_Click(object sender, EventArgs e)
         {
             Del();
+            Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Edit();
             Clear();
         }
     }

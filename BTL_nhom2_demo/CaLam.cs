@@ -13,7 +13,7 @@ namespace BTL_nhom2_demo
 {
     public partial class CaLam : Form
     {
-        QLBH_04Entities db = new QLBH_04Entities();
+        QLBH_nhom02Entities db = new QLBH_nhom02Entities();
         public CaLam()
         {
             InitializeComponent();
