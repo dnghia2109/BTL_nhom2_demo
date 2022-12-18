@@ -41,7 +41,7 @@ namespace BTL_nhom2_demo
             {
                 Main home = new Main();
                 home.ShowDialog();
-                this.Hide();
+                
             }
             else
             {
@@ -54,7 +54,7 @@ namespace BTL_nhom2_demo
             DialogResult result = MessageBox.Show("Do you want to exit?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Close();
+                Application.Exit();
             }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

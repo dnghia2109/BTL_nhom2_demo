@@ -77,38 +77,58 @@ namespace BTL_nhom2_demo
         
         }
 
-        public void CheckEmptyInfo()
+        public Boolean CheckEmptyInfo()
         {
             if (String.IsNullOrEmpty(txbTen.Text))
             {
                 MessageBox.Show("Vui lòng điền tên nhân viên.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txbTen.Focus();
+                return false;
             }
 
             if (String.IsNullOrEmpty(txbGioiTinh.Text))
             {
                 MessageBox.Show("Vui lòng điền giới tính nhân viên.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txbGioiTinh.Focus();
+                return false;
             }
 
             if (String.IsNullOrEmpty(txbDienThoai.Text))
             {
                 MessageBox.Show("Vui lòng điền SĐT nhân viên.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txbDienThoai.Focus();
+                return false;
             }
 
             if (String.IsNullOrEmpty(txbDiaChi.Text))
             {
                 MessageBox.Show("Vui lòng điền Địa chỉ.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txbDiaChi.Focus();
+                return false;
             }
 
             if (dateTimePicker1.Value == null)
             {
                 MessageBox.Show("Vui lòng điền DOB.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 dateTimePicker1.Focus();
+                return false;
             }
 
+            if (String.IsNullOrEmpty(cbCaLam.Text))
+            {
+                MessageBox.Show("Vui lòng điền Ca làm.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cbCaLam.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(cbCongViec.Text))
+            {
+                MessageBox.Show("Vui lòng điền Chức vụ.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cbCongViec.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         public void ClearForm()
@@ -124,44 +144,51 @@ namespace BTL_nhom2_demo
 
         public void Them()
         {
-            CheckEmptyInfo();
-            tb_Nhanvien nhanVien = new tb_Nhanvien()
+            if (CheckEmptyInfo())
             {
-                ten_nv = txbTen.Text,
-                gioi_tinh = txbGioiTinh.Text,
-                ngay_sinh = dateTimePicker1.Value,
-                //ngay_sinh = DateTime.Parse(dateTimePicker1.Text),
-                dien_thoai = txbDienThoai.Text,
-                dia_chi = txbDiaChi.Text,
-                ma_ca = Convert.ToInt32(cbCaLam.SelectedValue),
-                ma_cv = Convert.ToInt32(cbCongViec.SelectedValue)
-            };
+                tb_Nhanvien nhanVien = new tb_Nhanvien()
+                {
+                    ten_nv = txbTen.Text,
+                    gioi_tinh = txbGioiTinh.Text,
+                    ngay_sinh = dateTimePicker1.Value,
+                    //ngay_sinh = DateTime.Parse(dateTimePicker1.Text),
+                    dien_thoai = txbDienThoai.Text,
+                    dia_chi = txbDiaChi.Text,
+                    ma_ca = Convert.ToInt32(cbCaLam.SelectedValue),
+                    ma_cv = Convert.ToInt32(cbCongViec.SelectedValue)
+                };
 
-            db.tb_Nhanvien.Add(nhanVien);
-            db.SaveChanges();
-            LoadData();
-            ClearForm();
+                db.tb_Nhanvien.Add(nhanVien);
+                db.SaveChanges();
+                LoadData();
+                ClearForm();
+            }
+           
 
         }
 
         public void Sua()
         {
-            int manv = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_nv"].Value.ToString());
-            tb_Nhanvien curNhanVien = db.tb_Nhanvien.Where(nv => nv.ma_nv == manv).SingleOrDefault();
-            CheckEmptyInfo();
+            if (CheckEmptyInfo()) 
+            {
+                int manv = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_nv"].Value.ToString());
+                tb_Nhanvien curNhanVien = db.tb_Nhanvien.Where(nv => nv.ma_nv == manv).SingleOrDefault();
 
-            curNhanVien.ten_nv = txbTen.Text;
-            curNhanVien.gioi_tinh = txbGioiTinh.Text;
-            curNhanVien.ngay_sinh = dateTimePicker1.Value;
-            //curNhanVien.ngay_sinh = DateTime.Parse(dateTimePicker1.Text),
-            curNhanVien.dien_thoai = txbDienThoai.Text;
-            curNhanVien.dia_chi = txbDiaChi.Text;
-            curNhanVien.ma_ca = Convert.ToInt32(cbCaLam.SelectedValue);
-            curNhanVien.ma_cv = Convert.ToInt32(cbCongViec.SelectedValue);
 
-            db.SaveChanges();
-            LoadData();
-            ClearForm();
+                curNhanVien.ten_nv = txbTen.Text;
+                curNhanVien.gioi_tinh = txbGioiTinh.Text;
+                curNhanVien.ngay_sinh = dateTimePicker1.Value;
+                //curNhanVien.ngay_sinh = DateTime.Parse(dateTimePicker1.Text),
+                curNhanVien.dien_thoai = txbDienThoai.Text;
+                curNhanVien.dia_chi = txbDiaChi.Text;
+                curNhanVien.ma_ca = Convert.ToInt32(cbCaLam.SelectedValue);
+                curNhanVien.ma_cv = Convert.ToInt32(cbCongViec.SelectedValue);
+
+                db.SaveChanges();
+                LoadData();
+                ClearForm();
+            }
+            
         }
 
         public void Xoa()

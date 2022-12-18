@@ -65,11 +65,11 @@ namespace BTL_nhom2_demo
         private void HoaDonBan_Load(object sender, EventArgs e)
         {
             txbMaHoaDon.ReadOnly = true;
-            txbTenNhanVien.ReadOnly = true;
+            //txbTenNhanVien.ReadOnly = true;
             txbTongThanhTien.ReadOnly = true;
-            txbDiaChi.ReadOnly = true;
-            txbDienThoai.ReadOnly = true;
-            txbDiaChi.ReadOnly = true;
+            //txbDiaChi.ReadOnly = true;
+            //txbDienThoai.ReadOnly = true;
+            //txbDiaChi.ReadOnly = true;
 
             btnAdd.Enabled = true;
             btnSave.Enabled = false;
@@ -449,5 +449,7 @@ namespace BTL_nhom2_demo
 
             }
         }
+
+        
     }
 }

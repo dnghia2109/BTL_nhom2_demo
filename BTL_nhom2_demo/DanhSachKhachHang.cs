@@ -29,7 +29,7 @@ namespace BTL_nhom2_demo
         public void LoadData()
         {
             var result = from c in db.tb_Khachhang
-                         select new { c.ma_kh, c.ten_kh, c.dia_chi, SĐT = c.dien_thoai };
+                         select new { c.ma_kh, c.ten_kh, c.dia_chi, c.dien_thoai };
             dataGridView1.DataSource = result.ToList();
             dataGridView1.Columns[0].HeaderText = "Mã khách hàng";
             dataGridView1.Columns[1].HeaderText = "Tên";
@@ -44,80 +44,66 @@ namespace BTL_nhom2_demo
             txbDienThoai.Clear();
         }
 
-        public void Them()
+        public Boolean CheckEmptyInfo()
         {
-            tb_Khachhang khachhang = new tb_Khachhang()
+            if (String.IsNullOrEmpty(txbTen.Text))
             {
-                ten_kh = txbTen.Text,
-                dia_chi = txbDiaChi.Text,
-                dien_thoai = txbDienThoai.Text
-            };
-            db.tb_Khachhang.Add(khachhang);
-            db.SaveChanges();
-            LoadData();
-            ClearForm();
+                MessageBox.Show("Vui lòng điền tên khách hàng", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txbTen.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(txbDiaChi.Text))
+            {
+                MessageBox.Show("Vui lòng điền địa chỉ khách hàng", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txbDiaChi.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(txbDienThoai.Text))
+            {
+                MessageBox.Show("Vui lòng điền SĐT khách hàng", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txbDienThoai.Focus();
+                return false;
+            }
+
+            return true;
         }
 
-    /*    public void Sua()
+        public void Them()
         {
-            int maKH = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_kh"].Value.ToString());
-            tb_Khachhang curKhachHang = db.tb_Khachhang.Where(khachHang => khachHang.ma_kh == maKH).SingleOrDefault();
-
-
-            if (String.IsNullOrEmpty(txbTen.Text) || String.IsNullOrEmpty(txbDiaChi.Text) || String.IsNullOrEmpty(txbDienThoai.Text))
+            if (CheckEmptyInfo())
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            else
-            {
-                curKhachHang.ten_kh = txbTen.Text;
-                curKhachHang.dia_chi = txbDiaChi.Text;
-                var rs = from c in db.tb_Khachhang
-                         select c;
-                foreach (var item in rs)
+                tb_Khachhang khachhang = new tb_Khachhang()
                 {
-                    if (!item.dien_thoai.ToString().Equals(txbDienThoai.Text.ToString()))
-                    {
-                        curKhachHang.dien_thoai = txbDienThoai.Text;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Số điện thoại này đã tồn tại. Vui lòng sử dụng số khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txbDienThoai.Focus();
-                        return;
-                    }
-
-                }
+                    ten_kh = txbTen.Text,
+                    dia_chi = txbDiaChi.Text,
+                    dien_thoai = txbDienThoai.Text
+                };
+                db.tb_Khachhang.Add(khachhang);
                 db.SaveChanges();
-                MessageBox.Show("Cập nhật thành công", "Notification", MessageBoxButtons.OK);
                 LoadData();
                 ClearForm();
             }
-
-        }*/
-
+            
+        }
 
 
         //Cách 1
         public void Sua()
         {
-            int maKH = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_kh"].Value.ToString());
-            tb_Khachhang curKhachHang = db.tb_Khachhang.Where(khachHang => khachHang.ma_kh == maKH).SingleOrDefault();
-
-
-            if (String.IsNullOrEmpty(txbTen.Text) || String.IsNullOrEmpty(txbDiaChi.Text) || String.IsNullOrEmpty(txbDienThoai.Text))
+            if (CheckEmptyInfo())
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            else
-            {
+                int maKH = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["ma_kh"].Value.ToString());
+                tb_Khachhang curKhachHang = db.tb_Khachhang.Where(khachHang => khachHang.ma_kh == maKH).SingleOrDefault();
                 curKhachHang.ten_kh = txbTen.Text;
                 curKhachHang.dia_chi = txbDiaChi.Text;
                 var rs = from c in db.tb_Khachhang
                          select c;
-                foreach(var i in rs)
+
+                foreach (var i in rs)
                 {
-                    if (i.dien_thoai.ToString().Equals(txbDienThoai.Text.ToString()))
+                    if (i.dien_thoai.ToString().Equals(txbDienThoai.Text.ToString()) == true)
                     {
                         MessageBox.Show("Số điện thoại này đã tồn tại. Vui lòng sử dụng số khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txbDienThoai.Focus();
@@ -133,7 +119,6 @@ namespace BTL_nhom2_demo
                 LoadData();
                 ClearForm();
             }
-
         }
 
         public void Xoa()
